@@ -1,0 +1,18 @@
+.external-bar{
+    height: 10px;
+    border-radius: 20px;
+    background-color: #F5F5F5;
+}
+.inner-bar{
+    height: 10px;
+    border-radius: 20px;
+}
+.ProgressBar h3{
+    font-weight: 500;
+    font-size: 16px;
+}
+.ProgressBar .text-below{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 300;
+}

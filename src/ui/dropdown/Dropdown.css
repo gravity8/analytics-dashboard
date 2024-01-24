@@ -1,0 +1,66 @@
+.dropdown{
+    width: 10;
+    max-width: 180px;
+    position: relative;
+    margin-left: 20px;
+}
+.dropdownTitle{
+    padding: 0.5rem;
+    border-radius:0.4rem ;
+    background-color: transparent;
+    width: 100px;
+}
+.dropdownTitle p{
+    font-weight: 500;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+.dropdownTitle p::after{
+    content: url('../../assets/calendar.svg');
+    position: absolute;
+    display: inline-block;
+    left: -1.3rem;
+    top:18px;
+}
+.dropdownOptions{
+    width: 100%;
+    position: absolute;
+    height: 250px;
+    overflow: scroll;
+    top: 45px;
+    padding: 1rem 0.6rem;
+    background-color: white;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.148);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+.dropdownOptions::-webkit-scrollbar{
+    width: 0.5em;
+    position: absolute;
+}
+.dropdownOptions::-webkit-scrollbar-track{
+    background-color: white;
+}
+.dropdownOptions::-webkit-scrollbar-thumb{
+    background-color: var(--dark-silver);
+    border-radius: 100vw;
+    border: .2em solid white;
+    visibility: hidden;
+}
+.dropdownOptions:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
+}
+.dropdownOptions .option{
+    width: 100%;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+    cursor: pointer;
+    border: 0.2px solid transparent;
+    border-radius: 0.5rem;
+}
+.dropdownOptions .option:hover, .option.activeDropdown{
+    border-color: black;
+}
