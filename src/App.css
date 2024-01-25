@@ -4,6 +4,7 @@
   --secondary-color:white;
   --tertiary-color: transparent;
   --border: #E1DFDF;
+  --tab-effect: #0D062D;
 }
 [data-theme='dark']{
   --bg-color: rgb(14, 14, 14);
@@ -11,6 +12,7 @@
   --secondary-color:rgb(14, 14, 14);
   --tertiary-color: white;
   --border: #3A3F51;
+  --tab-effect: rgb(52, 202, 165);
 }
 /* Light theme styles */
 body{
@@ -23,23 +25,53 @@ body{
 }
 .dashboard{
   display: flex;
-  width: calc(100%-5%);
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
   padding-inline: 20px;
   gap : 2%;
+  margin: auto;
 }
-.dashboard .dashboard-left{
-  width: 53%;
+
+.dashboard .dashboard-top{
+  display: flex;
+  /* height: 300px; */
+  gap: 2%;
+  margin-bottom: 50px;
 }
-.dashboard .dashboard-right{
-  width: 45%;
+.dashboard .dashboard-bottom{
+  display: flex;
+  gap: 2%;
+}
+.dashboard .dashboard-bottom>.top-platform{
+  width: 40%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.dashboard .dashboard-bottom .lastOrders{
+  width: 60%;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.dashboard .dashboard-bottom .lastOrders .top-platform{
+  border-radius: 14px;
+}
+.theme-toggler{
+  display: none;
+  position: fixed;
+  margin-left: 15px;
+  margin-top: 200px;
 }
 .barChart{
-  margin-bottom: 20px;
   background-color: var(--secondary-color);
   padding: 20px;
   border-radius: 14px;
-
+  width: 55%;
+  border: 1px solid var(--border);
+  min-width: 250px
 }
+
+
 .barChart select{
   width: 100px;
   height: 30px;
@@ -68,17 +100,68 @@ body{
 .operation-stats{
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 2%;
+  
+  width: 40%;
+
 }
+
 .operation-stats .stat{
-  width: 42%;
-  /* height: 130px; */
+  width: 41%;
+
   padding: 16px;
   border-radius: 14px;
   border: 1px solid var(--border);
   background: var(--secondary-color);
 }
+
+.stat-content{
+  display:flex;
+  flex-direction:column;
+  justify-content: space-between;
+  height: 100%;
+}
+.stat-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+.stat-graph{
+  width: 45%;
+}
+.stat-title{
+  font-size:15px;
+  margin:0;
+  margin-block:8px;
+  font-weight:400;
+  color:#898989
+}
+.stat-value{
+  font-size:20px;
+  margin:0;
+  margin-bottom:1px;
+  color:#3A3F51
+}
+.stat-change-percentage{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.stat-change-percentage .change-percent{
+  display:flex;
+  width:80px;
+  height:20px;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  background-color:rgba(52, 202, 165, 0.12);
+  border-radius:20px
+}
+.stat-extras{
+  font-size:14px;
+  color:#606060;
+}
+
 .operation-stats .stat .stat-icon{
   display: flex;
   align-items: center;
@@ -88,7 +171,7 @@ body{
   border-radius: 50%;
 }
 .top-platform{
-  
+  padding-top:10px;
   border-radius: 8px;
   background-color: var(--secondary-color);
 }
@@ -97,5 +180,140 @@ body{
   justify-content: space-between;
   padding-inline: 15px;
   height: 30px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+}
+.progress-bars{
+  padding-inline:20px;
+  height:350px;
+  overflow:scroll
+}
+.table{
+  padding-inline:20px;
+  height:350px;
+  overflow:scroll
+}
+.theme-toggle .dark_mode{
+  display: none;
+}
+
+@media (min-width: 1036px) and (max-width:1350px){
+  .stat-title{
+    /* font-size:13px; */
+   
+  }
+  .stat-value{
+    /* font-size:16px; */
+  
+  }
+  .stat-extras{
+    font-size:11px;
+    color:#606060;
+  }
+  .stat-change-percentage{
+    /* margin-bottom: 10px; */
+  }
+  .stat-change-percentage .change-percent{
+    width:60px;
+    height:20px;
+    font-size: 12px !important;
+  }
+  .operation-stats .stat .stat-icon{
+    padding: 3px;
+  }
+}
+@media (max-width:1035px){
+  .dashboard .dashboard-top{
+    flex-direction: column;
+  }
+  .dashboard .dashboard-bottom{
+    flex-direction: column;
+  }
+  .dashboard .dashboard-bottom .lastOrders{
+    width:90%;
+    margin: auto;
+    margin-bottom: 50px;
+  }
+  .dashboard .dashboard-bottom> .top-platform{
+    width: 90%;
+    margin: auto;
+  }
+  .barChart{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+  .operation-stats{
+    width: unset;
+    height: unset;
+    margin: auto;
+    justify-content: space-around;
+    padding-inline: 20px;
+  }
+  .operation-stats .stat{
+    margin-bottom: 15px;
+    
+  }
+  .operation-stats .stat{
+    height: unset;
+    
+  }
+  .progress-bars{
+    height: unset;
+  }
+  
+}
+@media (min-width: 1036px) and (max-width: 1270px) {
+  .barChart{
+    width: 52%;
+  
+  }
+  .operation-stats{
+    width: 48%;
+  }
+  
+  .operation-stats .stat{
+    /* height: 100px; */
+    
+  }
+  .dashboard-bottom{
+    justify-content: space-between;
+  }
+  .dashboard-bottom> .top-platform{
+    width:42% !important;
+  }
+  .dashboard .dashboard-bottom .lastOrders{
+    width: 56%;
+  }
+}
+@media (max-width:532px){
+  .operation-stats .stat{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+  .table table{
+    width: 400px
+  }
+  .operation-stats{
+    margin-bottom: 50px;
+  }
+  .dashboard{
+    padding-bottom: 60px;
+    padding-inline: unset;
+    margin: unset;
+  }
+  .dashboard-top{
+    margin-left:  10px;
+    width: 100%;
+  }
+  .barChart .barView > canvas{
+    height: 240px !important;
+    font-size: 12px;
+  }
+  .main{
+    margin: 0;
+  }
+  .theme-toggler{
+    display: block;
+  }
 }

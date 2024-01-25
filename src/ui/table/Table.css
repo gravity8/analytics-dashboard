@@ -6,8 +6,8 @@ table{
 }
 thead{
     position: sticky;
-    top: 0;
-    background-color: var(--bg-color);
+    top: -2px;
+    background-color: var(--secondary-color);
 }
 thead, tbody, tr{
     display: table;

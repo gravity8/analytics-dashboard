@@ -16,6 +16,8 @@ import photo3 from './assets/photo3.svg'
 import photo4 from './assets/photo4.svg'
 import photo5 from './assets/photo5.svg'
 import Dropdown from './ui/dropdown/Dropdown';
+import DarkMode from './component/DarkMode-button/DarkMode';
+
 
 function App() {
 
@@ -170,13 +172,18 @@ function App() {
     }
     
   ]
+
   return (
     <div className="App">
       <Sidebar />
+      
       <div className='main'>
         <Navbar />
+        <div className='theme-toggler'>
+          <DarkMode/>
+        </div>
         <div className="dashboard">
-          <div className='dashboard-left'>
+          <div className='dashboard-top'>
             <div className='barChart'>
               <div className='chartHeader'>
                 <h3>Sales Trends</h3>
@@ -189,26 +196,15 @@ function App() {
                   </select>
                 </div>
               </div>
-              <Bar data={data} options={options} height={140}/>
+              
+                <Bar data={data} options={options} height={122}/>
+              
+              
             </div>
-            <div className='lastOrders'>
-                <div className='top-platform'>
-                  <div className='header'>
-                    <h3 style={{fontSize:"16px", fontWeight:500}}>Last Orders</h3>
-                    <p style={{color:"#34CAA5",fontWeight:500, fontSize:"15px"}}>See All</p>
-                  </div>
-                  <div style={{paddingInline:"20px", height:"350px", overflow:"scroll"}}>
-                    <Table data={tableData}/>
-                  </div>
-                  
-                </div>
-            </div>
-          </div>
-          <div className='dashboard-right'>
-                <div className='operation-stats'>
+            <div className='operation-stats'>
                   <div className='stat'>
-                    <div style={{display:'flex', flexDirection:"column"}}>
-                      <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                    <div className='stat-content'>
+                      <div className="stat-header">
                         <div className='stat-icon'>
                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                             <path opacity="0.4" d="M19.3499 5.65995L13.0599 2.27C12.3999 1.91 11.5999 1.91 10.9299 2.27L4.63992 5.65995C4.17992 5.90995 3.8999 6.39998 3.8999 6.93998C3.8999 7.47998 4.17992 7.96995 4.63992 8.21995L10.9299 11.61C11.2599 11.79 11.6299 11.88 11.9899 11.88C12.3499 11.88 12.7199 11.79 13.0499 11.61L19.3399 8.21995C19.7999 7.96995 20.0799 7.47998 20.0799 6.93998C20.0999 6.39998 19.8099 5.90995 19.3499 5.65995Z" fill="#34CAA5"/>
@@ -217,27 +213,29 @@ function App() {
                             <path d="M21.98 15.67C21.16 14.66 19.91 14.02 18.5 14.02C17.44 14.02 16.46 14.39 15.69 15.01C14.65 15.83 14 17.1 14 18.52C14 19.36 14.24 20.16 14.65 20.84C14.92 21.29 15.26 21.68 15.66 22H15.67C16.44 22.64 17.43 23.02 18.5 23.02C19.64 23.02 20.67 22.6 21.46 21.9C21.81 21.6 22.11 21.24 22.35 20.84C22.76 20.16 23 19.36 23 18.52C23 17.44 22.62 16.44 21.98 15.67ZM20.76 17.96L18.36 20.18C18.22 20.31 18.03 20.38 17.85 20.38C17.66 20.38 17.47 20.31 17.32 20.16L16.21 19.05C15.92 18.76 15.92 18.28 16.21 17.99C16.5 17.7 16.98 17.7 17.27 17.99L17.87 18.59L19.74 16.86C20.04 16.58 20.52 16.6 20.8 16.9C21.09 17.21 21.07 17.68 20.76 17.96Z" fill="#34CAA5"/>
                           </svg>
                         </div>
-                        <img src={greenGraph} alt="" />
+                        <img className='stat-graph' src={greenGraph} alt="" />
                       </div>
-                        
-                        <h3 style={{fontSize:"15px", margin:0, marginBlock:"8px", fontWeight:"400", color:"#898989"}}>Total Order</h3>
-                        <h3 style={{fontSize:"20px", margin:0, marginBottom:"1px", color:"#3A3F51"}}>350</h3>
-                        <div style={{display:'flex', alignItems:'center', justifyContent:"space-between"}}>
-                          <div style={{display:'flex',width:"80px", height:"20px", alignItems:'center',justifyContent:"center",gap:"5px", backgroundColor:'rgba(52, 202, 165, 0.12)', borderRadius:'20px'}}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
-                              <path d="M0.5 5.5L3.5 2.5L5.5 4.5L9.5 0.5" stroke="#34CAA5" stroke-linecap="round" stroke-linejoin="round"/>
-                              <path d="M6 0.5H9.5V4" stroke="#34CAA5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <p style={{fontSize:'12px', color:"#34CAA5"}}>23,5%</p>
-                          </div>
-                          <p style={{ fontSize:'14px', color:"#606060"}}>vs. previous month</p>
+                      <div className='stat-text'>
+                        <h3 className='stat-title' >Total Order</h3>
+                        <h3 className='stat-value' >350</h3>
+                      </div>
+                      
+                      <div className='stat-change-percentage' >
+                        <div className='change-percent'>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                            <path d="M0.5 5.5L3.5 2.5L5.5 4.5L9.5 0.5" stroke="#34CAA5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M6 0.5H9.5V4" stroke="#34CAA5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                          <p style={{fontSize:'12px', color:"#34CAA5"}}>23,5%</p>
                         </div>
+                        <p className='stat-extras'>vs. previous month</p>
+                      </div>
                 
                     </div>
                   </div>
                   <div className='stat'>
-                    <div style={{display:'flex', flexDirection:"column"}}>
-                      <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                    <div className='stat-content'>
+                      <div className="stat-header">
                         <div className='stat-icon'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M7.57821 2.91194C4.8091 3.55436 2.75 6.03342 2.75 9C2.75 9.41421 2.41421 9.75 2 9.75C1.58579 9.75 1.25 9.41421 1.25 9C1.25 4.71579 4.71579 1.25 9 1.25C9.2702 1.25 9.51952 1.39534 9.65265 1.63047C9.78578 1.8656 9.78214 2.15417 9.64312 2.38587L8.59313 4.13587C8.38002 4.49105 7.91933 4.60623 7.56414 4.39312C7.20896 4.18001 7.09378 3.71932 7.30689 3.36413L7.57821 2.91194ZM22 14.25C22.4142 14.25 22.75 14.5858 22.75 15C22.75 19.2842 19.2842 22.75 15 22.75C14.7298 22.75 14.4805 22.6047 14.3474 22.3695C14.2142 22.1344 14.2179 21.8458 14.3569 21.6141L15.4069 19.8641C15.62 19.5089 16.0807 19.3938 16.4359 19.6069C16.791 19.82 16.9062 20.2807 16.6931 20.6359L16.4218 21.0881C19.1909 20.4456 21.25 17.9666 21.25 15C21.25 14.5858 21.5858 14.25 22 14.25Z" fill="#34CAA5"/>
@@ -246,27 +244,27 @@ function App() {
                           <path opacity="0.4" d="M17.5904 10.7599C17.3304 10.5999 17.0204 10.5899 16.7504 10.7199L13.2504 12.4699C12.7404 12.7299 12.4204 13.2399 12.4204 13.8099V17.1199C12.4204 17.4199 12.5704 17.6899 12.8304 17.8499C12.9704 17.9399 13.1204 17.9799 13.2804 17.9799C13.4104 17.9799 13.5404 17.9499 13.6704 17.8899L17.1704 16.1399C17.6804 15.8799 18.0004 15.3699 18.0004 14.7999V11.4899C18.0004 11.1899 17.8504 10.9199 17.5904 10.7599Z" fill="#34CAA5"/>
                         </svg>
                         </div>
-                        <img src={graphRed} alt="" />
+                        <img src={graphRed} className='stat-graph' alt="" />
                       </div>
                         
-                        <h3 style={{fontSize:"15px", margin:0, marginBlock:"8px", fontWeight:"400", color:"#898989"}}>Total Refund</h3>
-                        <h3 style={{fontSize:"20px", margin:0, marginBottom:"1px", color:"#3A3F51"}}>270</h3>
-                        <div style={{display:'flex', alignItems:'center', justifyContent:"space-between"}}>
-                          <div style={{display:'flex',width:"80px", height:"20px", alignItems:'center',justifyContent:"center",gap:"5px", backgroundColor:'rgba(237, 84, 78, 0.12)', borderRadius:'20px'}}>
+                        <h3 className='stat-title'>Total Refund</h3>
+                        <h3 className='stat-value'>270</h3>
+                        <div className='stat-change-percentage'>
+                          <div className='change-percent' style={{ backgroundColor:'rgba(237, 84, 78, 0.12)'}}>
                           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
                             <path d="M0.5 0.5L3.5 3.5L5.5 1.5L9.5 5.5" stroke="#ED544E" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M6 5.5H9.5V2" stroke="#ED544E" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
                             <p style={{fontSize:'12px', color:"#ED544E"}}>23,5%</p>
                           </div>
-                          <p style={{fontSize:'14px', color:"#606060", }}>vs. previous month</p>
+                          <p className='stat-extras' style={{color:"#606060", }}>vs. previous month</p>
                         </div>
-                
+
                     </div>
                   </div>
                   <div className='stat'>
-                    <div style={{display:'flex', flexDirection:"column"}}>
-                      <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                    <div className='stat-content'>
+                      <div className="stat-header">
                         <div className='stat-icon'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                           <path d="M16.25 22.5C17.2165 22.5 18 21.7165 18 20.75C18 19.7835 17.2165 19 16.25 19C15.2835 19 14.5 19.7835 14.5 20.75C14.5 21.7165 15.2835 22.5 16.25 22.5Z" fill="#34CAA5"/>
@@ -275,27 +273,27 @@ function App() {
                           <path d="M20.5101 8.75H5.17006C4.75006 8.75 4.41005 9.07 4.37005 9.48L4.01005 13.83C3.87005 15.53 5.21006 17 6.92006 17H18.0401C19.5401 17 20.8601 15.77 20.9701 14.27L21.3001 9.60001C21.3401 9.14001 20.9801 8.75 20.5101 8.75Z" fill="#34CAA5"/>
                         </svg>
                         </div>
-                        <img src={graphRed} alt="" />
+                        <img src={graphRed} className='stat-graph' alt="" />
                       </div>
                         
-                        <h3 style={{fontSize:"15px", margin:0, marginBlock:"8px", fontWeight:"400", color:"#898989"}}>Average Sales</h3>
-                        <h3 style={{fontSize:"20px", margin:0, marginBottom:"1px", color:"#3A3F51"}}>1567</h3>
-                        <div style={{display:'flex', alignItems:'center', justifyContent:"space-between"}}>
+                        <h3 className='stat-title'>Average Sales</h3>
+                        <h3 className='stat-value'>1567</h3>
+                        <div className='stat-change-percentage'>
                           <div style={{display:'flex',width:"80px", height:"20px", alignItems:'center',justifyContent:"center",gap:"5px", backgroundColor:'rgba(237, 84, 78, 0.12)', borderRadius:'20px'}}>
                           <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
                             <path d="M0.5 0.5L3.5 3.5L5.5 1.5L9.5 5.5" stroke="#ED544E" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M6 5.5H9.5V2" stroke="#ED544E" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>
-                            <p style={{fontSize:'12px', color:"#ED544E"}}>23,5%</p>
+                            <p className='stat-extras' style={{ color:"#ED544E"}}>23,5%</p>
                           </div>
-                          <p style={{fontSize:'14px',color:"#606060"}}>vs. previous month</p>
+                          <p className='stat-extras' style={{color:"#606060"}}>vs. previous month</p>
                         </div>
                 
                     </div>
                   </div>
                   <div className='stat'>
-                    <div style={{display:'flex', flexDirection:"column"}}>
-                      <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                    <div className='stat-content'>
+                      <div className="stat-header">
                         <div className='stat-icon'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
                           <path opacity="0.4" d="M9.99 17.98C14.4028 17.98 17.98 14.4028 17.98 9.99C17.98 5.57724 14.4028 2 9.99 2C5.57724 2 2 5.57724 2 9.99C2 14.4028 5.57724 17.98 9.99 17.98Z" fill="#34CAA5"/>
@@ -303,31 +301,47 @@ function App() {
                           <path d="M11.45 9.71003L9.05 8.87003C8.81 8.79003 8.76 8.77003 8.76 8.42003C8.76 8.16003 8.94 7.95003 9.17 7.95003H10.67C10.99 7.95003 11.25 8.24003 11.25 8.60003C11.25 9.01003 11.59 9.35003 12 9.35003C12.41 9.35003 12.75 9.01003 12.75 8.60003C12.75 7.45003 11.86 6.51003 10.75 6.46003V6.41003C10.75 6.00003 10.41 5.66003 10 5.66003C9.59 5.66003 9.25 5.99003 9.25 6.41003V6.46003H9.16C8.11 6.46003 7.25 7.34003 7.25 8.43003C7.25 9.38003 7.67 9.99003 8.54 10.29L10.95 11.13C11.19 11.21 11.24 11.23 11.24 11.58C11.24 11.84 11.06 12.05 10.83 12.05H9.33C9.01 12.05 8.75 11.76 8.75 11.4C8.75 10.99 8.41 10.65 8 10.65C7.59 10.65 7.25 10.99 7.25 11.4C7.25 12.55 8.14 13.49 9.25 13.54V13.6C9.25 14.01 9.59 14.35 10 14.35C10.41 14.35 10.75 14.01 10.75 13.6V13.55H10.84C11.89 13.55 12.75 12.67 12.75 11.58C12.75 10.63 12.32 10.02 11.45 9.71003Z" fill="#34CAA5"/>
                         </svg>
                         </div>
-                        <img src={greenGraph} alt="" />
+                        <img src={greenGraph} className='stat-graph' alt="" />
                       </div>
                         
-                        <h3 style={{fontSize:"15px", margin:0, marginBlock:"8px", fontWeight:"400", color:"#898989"}}>Total Income</h3>
-                        <h3 style={{fontSize:"20px", margin:0, marginBottom:"1px", color:"#3A3F51"}}>$350.000</h3>
-                        <div style={{display:'flex', alignItems:'center', justifyContent:"space-between"}}>
+                        <h3 className='stat-title'>Total Income</h3>
+                        <h3 className='stat-value'>$350.000</h3>
+                        <div className='stat-change-percentage'>
                           <div style={{display:'flex',width:"80px", height:"20px", alignItems:'center',justifyContent:"center",gap:"5px", backgroundColor:'rgba(52, 202, 165, 0.12)', borderRadius:'20px'}}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="6" viewBox="0 0 10 6" fill="none">
                               <path d="M0.5 5.5L3.5 2.5L5.5 4.5L9.5 0.5" stroke="#34CAA5" stroke-linecap="round" stroke-linejoin="round"/>
                               <path d="M6 0.5H9.5V4" stroke="#34CAA5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            <p style={{fontSize:'12px', color:"#34CAA5"}}>23,5%</p>
+                            <p className='stat-extras' style={{color:"#34CAA5"}}>23,5%</p>
                           </div>
-                          <p style={{fontSize:'14px', color:"#606060"}}>vs. previous month</p>
+                          <p className='stat-extras' style={{color:"#606060"}}>vs. previous month</p>
                         </div>
-                
+                        
+                        
                     </div>
                   </div>
                 </div>
+          </div>
+          <div className='dashboard-bottom'>
+                <div className='lastOrders'>
+                  <div className='top-platform'>
+                    <div className='header'>
+                      <h3 style={{fontSize:"16px", fontWeight:500}}>Last Orders</h3>
+                      <p style={{color:"#34CAA5",fontWeight:500, fontSize:"15px"}}>See All</p>
+                    </div>
+                    <div className='table'>
+                      <Table data={tableData}/>
+                    </div>
+                    
+                  </div>
+                </div>
+
                 <div className='top-platform'>
                   <div className='header'>
                     <h3 style={{fontSize:"16px", fontWeight:500}}>Top Platform</h3>
                     <p style={{color:"#34CAA5",fontWeight:500, fontSize:"15px"}}>See All</p>
                   </div>
-                  <div style={{paddingInline:"20px", height:"350px", overflow:"scroll"}}>
+                  <div className='progress-bars'>
                     <ProgressBar item={{title:"Book Bazaar", progress:"$2,500,000",growth:"+15%"}} color="#6160DC" percentage="55%"/>
                     <ProgressBar item={{title:"Artisan Aisle", progress:"$1,800,000",growth:"+10%"}} color="#54C5EB" percentage="45%"/>
                     <ProgressBar item={{title:"Toy Troop", progress:"$1,200,000",growth:"+8%"}} color="#FFB74A" percentage="25%"/>

@@ -1,7 +1,7 @@
 
 .dark_mode {
     margin-top: -20px;
-    margin-left: 10px;
+    
 }
 
 .dark_mode_label {
@@ -44,18 +44,9 @@
 .dark_mode_input:checked + .dark_mode_label:after {
     top: 77px;
     transform: translateY(-100%);
-    background: #34CAA5;
 }
-/* .dark_mode_label:active:after {
-    width: 30px;
-} */
 
-.dark_mode_label {
-    /* position: relative; */
-    /* width: 16px; */
-    /* top: 6px; */
 
-}
 .dark_mode_label svg:nth-of-type(1){
     transition: 0.3s;
     z-index: 1000;

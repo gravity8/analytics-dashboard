@@ -3,30 +3,46 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    
     background-color: var(--secondary-color);
     height: 100vh;
     position: fixed;
     width: 5%;
     
 }
+
 .Sidebar.sidebar-top svg:first-child path{
     fill:#34CAA5 ;
+    
 }
-.adjustingColor{
+.Sidebar .adjustingColor{
     fill: var(--border);
     background-color: var(--tertiary-color);
-    padding: 5px;
+    padding-inline: 5px;
     border-radius: 10px;
 }
-.mainIcons{
-    padding: 5px;
 
+.Sidebar .active::before{
+    content: "";
+    height: 24px;
+    width: 4px;
+    border-radius: 10px 0 0 10px;
+    background-color: var(--tab-effect);
+    display: block;
+    position: absolute;
+    right: -15px;
+    top: 10px;
 }
-.mainIcons:hover{
+.Sidebar .mainIcons{
+    position: relative;
+}
+.Sidebar .mainIcons svg{
+    margin-top: 5px;
+}
+/* .mainIcons :hover{
     background-color: var(--primary-color);
-     border-radius: 20px;
-}
+    border-radius: 20px;
+    
+} */
 .Sidebar svg{
     color: var(--bg-color);
     
@@ -36,7 +52,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 10px;
     margin-top: 18px;
 }
 .sidebar-top svg{
@@ -45,11 +61,22 @@
 .sidebar-top svg:nth-of-type(1){
     height: 35px;
 }
+.sidebar-top > svg{
+    margin-bottom: 20px;
+}
+.sibebar-bottom .mainIcons{
+    margin-top: 10px;
+}
 .sibebar-bottom{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 10px;
     margin-top: 30px;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
+}
+@media (max-width:532px){
+    .Sidebar{
+        display: none;
+    }
 }

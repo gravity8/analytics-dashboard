@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./DarkMode.css";
 
-const DarkMode = ({togglerState}) => {
+const DarkMode = () => {
    
     // State to track the current theme
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');;
@@ -11,8 +11,11 @@ const DarkMode = ({togglerState}) => {
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    document.querySelector('body').classList.remove(theme)
-    document.querySelector('body').classList.add(newTheme)
+    
+    // Remove the old theme class and add the new one
+    document.querySelector('body').classList.remove(theme);
+    document.querySelector('body').classList.add(newTheme);
+    
     localStorage.setItem('theme', newTheme); // Store theme preference in localStorage
   };
 
