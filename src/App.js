@@ -1,6 +1,6 @@
 
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Sidebar from './component/sidebar/Sidebar';
 import Navbar from './component/navbar/Navbar';
 import greenGraph from './assets/graphGreen.svg';
@@ -10,8 +10,24 @@ import { Bar } from 'react-chartjs-2';
 import ProgressBar from './ui/progress-bar/ProgressBar';
 import Table from './ui/table/Table';
 import { UserData } from './Data';
+import photo1 from './assets/photo1.svg'
+import photo2 from './assets/photo2.svg'
+import photo3 from './assets/photo3.svg'
+import photo4 from './assets/photo4.svg'
+import photo5 from './assets/photo5.svg'
+import Dropdown from './ui/dropdown/Dropdown';
 
 function App() {
+
+  const [ShortBy, setShortBy]= useState('')
+  const shortBy = {
+    value: 'monthly',
+    options: [
+        'weekly',
+        'monthly',
+        'yearly',
+    ]
+}
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
     datasets: [
@@ -20,30 +36,60 @@ function App() {
         data: [7000, 20200, 7200, 26000, 9000,46000, 9000,23000,32000,6500,30000,26000],
         backgroundColor: '#34CAA51A',
         borderColor: '#34CAA51A',
-        hoverBackgrounColor: '#34CAA51A',
+        hoverBackgroundColor: (context) => {
+          const gradient = context.chart.ctx.createLinearGradient(0, 0, 0, 320);
+          gradient.addColorStop(0, '#34CAA5');
+          gradient.addColorStop(1, 'rgba(52, 202, 165, 0.00)');
+          return gradient;
+        },
         borderWidth: 1,
         borderRadius: 50,
       }
     ]
   };
   const options = {
+    plugins: {
+      legend: {
+        display: false, // Hide the legend
+      },
+      
+    },
     scales: {
       x: {
+        ticks: {
+          color: "#525252",
+          font: {
+            size: 11,
+            weight: 500,
+            
+          },
+        },
         grid: {
-          display: false // Disable x-axis gridlines
-        }
+          display: false, // Disable x-axis gridlines
+          color: "#525252"
+        },
       },
       y: {
+        ticks: {
+          color: "#525252",
+          font: {
+            size: 13,
+            weight: 400,
+          },
+        },
         grid: {
-          borderDash: [5, 10],
-          offset: true
-        }
-      }
-    }
+          display: true, // Enable y-axis gridlines
+          drawBorder: false, // Hide the border of the gridlines
+          borderDash: [5, 5], // Set the dashed line pattern
+          color: "#525252",
+        },
+      },
+    },
   };
+  
   const tableData = [
     {
-      
+      "image": photo1,
       "Name": "Marcus Bergson",
       "Date": "Nov 15, 2023",
       "Amount": "$80,000",
@@ -51,6 +97,7 @@ function App() {
       "Invoice": ""
     },
     {
+      "image": photo2,
       "Name": "Jaydon Vaccaro",
       "Date": "Nov 15, 2023",
       "Amount": "$150,000",
@@ -58,6 +105,7 @@ function App() {
       "Invoice": ""
     },
     {
+      "image": photo3,
       "Name": "Corey Schleifer",
       "Date": "Nov 15, 2023",
       "Amount": "$87,000",
@@ -65,6 +113,7 @@ function App() {
       "Invoice": ""
     },
     {
+      "image": photo4,
       "Name": "Cooper Press",
       "Date": "Nov 15, 2023",
       "Amount": "$100,000",
@@ -72,6 +121,47 @@ function App() {
       "Invoice": ""
     },
     {
+      "image": photo5,
+      "Name": "Phillip Lubin",
+      "Date": "Nov 15, 2023",
+      "Amount": "$78,000",
+      "Status": 'Paid',
+      "Invoice": ""
+    },
+    {
+      "image": photo1,
+      "Name": "Phillip Lubin",
+      "Date": "Nov 15, 2023",
+      "Amount": "$78,000",
+      "Status": 'Paid',
+      "Invoice": ""
+    },
+    {
+      "image": photo2,
+      "Name": "Phillip Lubin",
+      "Date": "Nov 15, 2023",
+      "Amount": "$78,000",
+      "Status": 'Paid',
+      "Invoice": ""
+    },
+    {
+      "image": photo3,
+      "Name": "Phillip Lubin",
+      "Date": "Nov 15, 2023",
+      "Amount": "$78,000",
+      "Status": 'Paid',
+      "Invoice": ""
+    },
+    {
+      "image": photo4,
+      "Name": "Phillip Lubin",
+      "Date": "Nov 15, 2023",
+      "Amount": "$78,000",
+      "Status": 'Paid',
+      "Invoice": ""
+    },
+    {
+      "image": photo5,
       "Name": "Phillip Lubin",
       "Date": "Nov 15, 2023",
       "Amount": "$78,000",
@@ -88,7 +178,18 @@ function App() {
         <div className="dashboard">
           <div className='dashboard-left'>
             <div className='barChart'>
-              <Bar data={data} options={options} height={161}/>
+              <div className='chartHeader'>
+                <h3>Sales Trends</h3>
+                <div>
+                  <label>Short by:</label>
+                  <select  defaultValue={shortBy.value}>
+                    <option value={"weekly"}>weekly</option>
+                    <option value={"monthly"}>monthly</option>
+                    <option value={"yearly"}>yearly</option>
+                  </select>
+                </div>
+              </div>
+              <Bar data={data} options={options} height={140}/>
             </div>
             <div className='lastOrders'>
                 <div className='top-platform'>

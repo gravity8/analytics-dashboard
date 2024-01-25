@@ -1,25 +1,35 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import profileImg from "../../assets/profileImg.png"
 import './Navbar.css'
 import Dropdown from '../../ui/dropdown/Dropdown'
 
 function Navbar() {
+    const [daysInMonth, setDaysInMonth]= useState([])
+    useEffect(()=>{
+        // Function to format a date in 'Month day, year' format
+function formatDate(date) {
+    return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  }
+  
+  // Function to get an array of days in the current month
+ 
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+            const option = [];
+        
+            for (let day = 1; day <= new Date(currentDate.getFullYear(), currentMonth + 1, 0).getDate(); day++) {
+            const formattedDate = formatDate(new Date(currentDate.getFullYear(), currentMonth, day));
+            option.push(formattedDate);
+            }
+            setDaysInMonth(option);
+            
+
+    },[])
+    
+    const currentDate = new Date();
     const monthsAndYears = {
-        value: 'November 2023',
-        options: [
-            'January 2023',
-            'February 2023',
-            'March 2023',
-            'April 2023',
-            'May 2023',
-            'June 2023',
-            'July 2023',
-            'August 2023',
-            'September 2023',
-            'October 2023',
-            'November 2023',
-            'December 2023',
-        ]
+        value: currentDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+        options: daysInMonth,
     }
     const [MonthsAndYears,setMonthAndYear] = useState('')
     

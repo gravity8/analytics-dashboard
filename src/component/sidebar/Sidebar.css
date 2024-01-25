@@ -4,18 +4,40 @@
     align-items: center;
     justify-content: space-between;
     
-    background-color: #F7F8FA;
+    background-color: var(--bg-color);
     height: 100vh;
     position: fixed;
     width: 5%;
     
 }
+.Sidebar.sidebar-top svg:first-child path{
+    fill:#34CAA5 ;
+}
+.adjustingColor{
+    fill: var(--border);
+    background-color: var(--tertiary-color);
+    padding: 5px;
+    border-radius: 10px;
+}
+.mainIcons{
+    padding: 5px;
+
+}
+.mainIcons:hover{
+    background-color: var(--primary-color);
+     border-radius: 20px;
+}
+.Sidebar svg{
+    color: var(--bg-color);
+    
+}
+
 .sidebar-top{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 25px;
-    margin-top: 30px;
+    margin-top: 18px;
 }
 .sidebar-top svg{
     height: 20px;

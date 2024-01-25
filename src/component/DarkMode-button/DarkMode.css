@@ -14,10 +14,11 @@
     justify-content: space-between;
     padding-block: 3px;
     padding-bottom: 5px;
-    background: #FFF;
+    background: var(--bg-color);
     border-radius: 200px;
     cursor: pointer;
     transition: 0.3s;
+    border: 0.5px solid var(--border);
 }
 .dark_mode_label:after {
     content: "";
@@ -30,6 +31,7 @@
     border-radius: 180px;
     /* box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); */
     transition: 0.3s;
+    
 }
 .dark_mode_input {
     width: 0;
@@ -37,7 +39,7 @@
     visibility: hidden;
 }
 .dark_mode_input:checked + .dark_mode_label {
-    background: white;
+    background: var(--bg-color);
 }
 .dark_mode_input:checked + .dark_mode_label:after {
     top: 77px;
@@ -54,24 +56,35 @@
     /* top: 6px; */
 
 }
-.dark_mode_label svg:first-child {
-    fill: #fff !important;
+.dark_mode_label svg:nth-of-type(1){
     transition: 0.3s;
-    z-index: 5;
+    z-index: 1000;
 }
-
-.dark_mode_label svg:last-child {
-    fill: #fff !important;
-    transition: 0.3s;
+.dark_mode_label svg:nth-of-type(2){
     z-index: 5;
     margin-bottom: 5px;
+    height: 25px;
+    transition: 0.3s;
 }
 
-.dark_mode_input:checked + .dark_mode_label svg:first-child {
-    fill: #7e7e7e !important;
-}
-
-.dark_mode_input:checked + .dark_mode_label svg:last-child {
+.dark_mode_label svg:nth-of-type(1) path{
     fill: #fff !important;
 }
-
+.dark_mode_label svg:nth-of-type(2) path{
+    
+    fill: #7e7e7e !important;
+    
+}
+.dark_mode_input:checked + .dark_mode_label svg:nth-of-type(1){
+    
+    width: 23px;
+}
+.dark_mode_input:checked + .dark_mode_label svg:nth-of-type(2){
+    height: 20px;
+}
+.dark_mode_input:checked + .dark_mode_label svg:nth-of-type(1) path{
+    fill: #7e7e7e !important;
+}
+.dark_mode_input:checked + .dark_mode_label svg:nth-of-type(2) path{
+    fill: #fff !important;
+}

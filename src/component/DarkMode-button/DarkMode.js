@@ -4,13 +4,43 @@ import "./DarkMode.css";
 
 const DarkMode = ({togglerState}) => {
    
-    const toggleTheme = (e) => {
-        
-      };
-      
-    
+    // State to track the current theme
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');;
 
-      
+  // Function to toggle between 'light' and 'dark' themes
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    document.querySelector('body').classList.remove(theme)
+    document.querySelector('body').classList.add(newTheme)
+    localStorage.setItem('theme', newTheme); // Store theme preference in localStorage
+  };
+
+  // Effect to update the theme when the component mounts
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme) {
+      if(storedTheme==='dark'){
+        document.querySelector(".dark_mode_input").checked = true
+      }
+      setTheme(storedTheme);
+    }
+  }, []);
+
+  const initializeTheme = () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      document.body.setAttribute("data-theme", savedTheme); 
+    
+    } else {
+      // Default to light mode if no theme preference is set
+      document.body.setAttribute("data-theme", "light");
+
+    }
+    
+  };
+  initializeTheme();
+  
     return (
         <div className='dark_mode'>
             <input

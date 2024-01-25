@@ -7,7 +7,7 @@ table{
 thead{
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: var(--bg-color);
 }
 thead, tbody, tr{
     display: table;
@@ -15,6 +15,24 @@ thead, tbody, tr{
     table-layout: fixed;
 
     
+}
+thead tr th:first-child{
+    width: 30%;
+}
+thead tr th:nth-of-type(5){
+    width: 12%;
+}
+tbody tr td:first-child{
+    display: none;
+}
+tbody tr td:nth-last-of-type(5){
+    width: 30%;
+}
+tbody tr td:nth-last-of-type(1){
+    width: 12%;
+}
+tbody td{
+    padding-block: 7px;
 }
 td {
     text-align: left;
@@ -55,7 +73,7 @@ tbody::-webkit-scrollbar-track{
 tbody::-webkit-scrollbar-thumb{
     background-color: var(--dark-silver);
     border-radius: 100vw;
-    border: .2em solid white;
+    border: .2em solid var(--primary-color);
     visibility: hidden;
 }
 tbody:hover::-webkit-scrollbar-thumb{
@@ -67,6 +85,9 @@ tbody:hover::-webkit-scrollbar-thumb{
 }
 tbody tr{
     border-radius: 0.6rem;
+}
+.textWhite{
+    color: var(--primary-color) !important;
 }
 tbody button{
     width:90%;
@@ -80,4 +101,15 @@ tbody button{
 }
 tbody button:hover{
     background-color: rgb(41, 105, 255);
+}
+hr{
+   margin: 0;
+   border-style: none;
+   border: 0.5px solid var(--border);
+}
+table .name{
+    color: var(--primary-color);
+}
+table svg path{
+    fill: var(--primary-color)
 }

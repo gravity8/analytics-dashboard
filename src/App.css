@@ -1,6 +1,23 @@
-body{
-  background-color: #FAFAFA;
+:root {
+  --bg-color:#fff;
+  --primary-color:rgb(14, 14, 14);
+  --secondary-color:rgba(33, 31, 31, 0.616);
+  --tertiary-color: transparent;
+  --border: #E1DFDF;
 }
+[data-theme='dark']{
+  --bg-color: rgb(14, 14, 14);
+  --primary-color:white;
+  --secondary-color:white;
+  --tertiary-color: white;
+  --border: #3A3F51;
+}
+/* Light theme styles */
+body{
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+}
+
 .main{
   margin-left: 5%;
 }
@@ -18,10 +35,35 @@ body{
 }
 .barChart{
   margin-bottom: 20px;
-  background-color: white;
+  background-color: var(--bg-color);
   padding: 20px;
   border-radius: 14px;
 
+}
+.barChart select{
+  width: 100px;
+  height: 30px;
+  border-radius: 25px;
+  outline: 0;
+  padding-inline: 5px;
+  border: 1px solid var(--border);
+  
+}
+
+.chartHeader{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+.chartHeader h3{
+  font-size: 18px;
+  font-weight: 500;
+  margin-block: 4px;
+}
+.chartHeader label{
+  font-size: 13px;
+  margin-right: 10px;
 }
 .operation-stats{
   display: flex;
@@ -34,21 +76,21 @@ body{
   /* height: 130px; */
   padding: 16px;
   border-radius: 14px;
-  border: 1px solid #EDF2F7;
-  background: #FFF;
+  border: 1px solid var(--border);
+  background: var(--bg-color);
 }
 .operation-stats .stat .stat-icon{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #E6E6E6;
+  border: 1px solid var(--border);
   padding: 5px;
   border-radius: 50%;
 }
 .top-platform{
   
   border-radius: 8px;
-  background-color: white;
+  background-color: var(--bg-color);
 }
 .top-platform .header{
   display: flex;

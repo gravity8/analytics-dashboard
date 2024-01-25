@@ -35,7 +35,7 @@ const Dropdown = (props) => {
     return (
         <div className="dropdown" ref={dropdownRef}>
             <div onClick={handleDropdown} className='dropdownTitle'>
-                <p>{selectedOption}</p>
+                <p className='dropdown-current'>{selectedOption}</p>
             </div>
             {isOpen && <ul className="dropdownOptions">
                 {props.data.options.map((value, index)=>{
