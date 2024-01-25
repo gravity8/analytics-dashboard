@@ -1,14 +1,14 @@
 :root {
-  --bg-color:#fff;
+  --bg-color:#FAFAFA;
   --primary-color:rgb(14, 14, 14);
-  --secondary-color:rgba(33, 31, 31, 0.616);
+  --secondary-color:white;
   --tertiary-color: transparent;
   --border: #E1DFDF;
 }
 [data-theme='dark']{
   --bg-color: rgb(14, 14, 14);
   --primary-color:white;
-  --secondary-color:white;
+  --secondary-color:rgb(14, 14, 14);
   --tertiary-color: white;
   --border: #3A3F51;
 }
@@ -35,7 +35,7 @@ body{
 }
 .barChart{
   margin-bottom: 20px;
-  background-color: var(--bg-color);
+  background-color: var(--secondary-color);
   padding: 20px;
   border-radius: 14px;
 
@@ -77,7 +77,7 @@ body{
   padding: 16px;
   border-radius: 14px;
   border: 1px solid var(--border);
-  background: var(--bg-color);
+  background: var(--secondary-color);
 }
 .operation-stats .stat .stat-icon{
   display: flex;
@@ -90,7 +90,7 @@ body{
 .top-platform{
   
   border-radius: 8px;
-  background-color: var(--bg-color);
+  background-color: var(--secondary-color);
 }
 .top-platform .header{
   display: flex;

@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: space-between;
     
-    background-color: var(--bg-color);
+    background-color: var(--secondary-color);
     height: 100vh;
     position: fixed;
     width: 5%;
