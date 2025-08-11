@@ -1,27 +1,18 @@
-
-import './App.css';
-import { useEffect, useState } from 'react';
-import Sidebar from './component/sidebar/Sidebar';
-import Navbar from './component/navbar/Navbar';
-import greenGraph from './assets/graphGreen.svg';
-import graphRed from './assets/graphRed.svg'
-import { Chart as ChartJS } from "chart.js/auto";
+import React, {useState} from 'react'
+import './chartjs-setup.ts';
+import greenGraph from '../assets/graphGreen.svg';
+import graphRed from '../assets/graphRed.svg'
 import { Bar } from 'react-chartjs-2';
-import ProgressBar from './ui/progress-bar/ProgressBar';
-import Table from './ui/table/Table';
-import { UserData } from './Data';
-import photo1 from './assets/photo1.svg'
-import photo2 from './assets/photo2.svg'
-import photo3 from './assets/photo3.svg'
-import photo4 from './assets/photo4.svg'
-import photo5 from './assets/photo5.svg'
-import Dropdown from './ui/dropdown/Dropdown';
-import DarkMode from './component/DarkMode-button/DarkMode';
+import ProgressBar from '../ui/progress-bar/ProgressBar';
+import Table from '../ui/table/Table';
+import photo1 from '../assets/photo1.svg'
+import photo2 from '../assets/photo2.svg'
+import photo3 from '../assets/photo3.svg'
+import photo4 from '../assets/photo4.svg'
+import photo5 from '../assets/photo5.svg'
 
-
-function App() {
-
-  const [ShortBy, setShortBy]= useState('')
+const Dashboard = () => {
+    const [ShortBy, setShortBy]= useState('')
   const shortBy = {
     value: 'monthly',
     options: [
@@ -34,7 +25,7 @@ function App() {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
     datasets: [
       {
-        label: false,
+        label: '',
         data: [7000, 20200, 7200, 26000, 9000,46000, 9000,23000,32000,6500,30000,26000],
         backgroundColor: '#34CAA51A',
         borderColor: '#34CAA51A',
@@ -174,15 +165,7 @@ function App() {
   ]
 
   return (
-    <div className="App">
-      <Sidebar />
-      
-      <div className='main'>
-        <Navbar />
-        <div className='theme-toggler'>
-          <DarkMode/>
-        </div>
-        <div className="dashboard">
+    <div className="dashboard">
           <div className='dashboard-top'>
             <div className='barChart'>
               <div className='chartHeader'>
@@ -350,10 +333,8 @@ function App() {
                   
                 </div>
           </div>
-        </div>
-      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default Dashboard
