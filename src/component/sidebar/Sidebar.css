@@ -7,7 +7,7 @@
     height: 100vh;
     position: fixed;
     width: 5%;
-    
+    padding-bottom: 5rem !important;
 }
 
 .Sidebar.sidebar-top svg:first-child path{
@@ -67,13 +67,12 @@
 .sibebar-bottom .mainIcons{
     margin-top: 10px;
 }
-.sibebar-bottom{
+.sidebar-bottom{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    margin-top: 30px;
-    padding-bottom: 30px;
+    gap: 1rem;
+    padding-bottom: 3rem;
 }
 @media (max-width:532px){
     .Sidebar{

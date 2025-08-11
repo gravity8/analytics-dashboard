@@ -197,7 +197,7 @@ function App() {
                 </div>
               </div>
               
-                <Bar data={data} options={options} height={122}/>
+              <Bar data={data} options={options} height={122}/>
               
               
             </div>

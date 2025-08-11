@@ -52,7 +52,40 @@
     border: 1px solid var(--border);
     padding-inline: 10px;
     gap: 10px;
+    position: relative;
+    cursor: pointer;
+}
 
+.navbar-right .profile-view .user-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 200px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.navbar-right .profile-view .user-menu .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.navbar-right .profile-view .user-menu .menu-item:hover {
+    background-color: var(--bg-color);
+}
+
+.navbar-right .profile-view .user-menu .menu-item span {
+    color: var(--primary-color);
+    font-size: 14px;
 }
 .navbar-right .notification{
     height: 40px ;
